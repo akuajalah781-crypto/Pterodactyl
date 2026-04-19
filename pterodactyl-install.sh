@@ -49,33 +49,19 @@ echo -e "  ${BOLD}Panel v${PANEL_VERSION} + Wings v${WINGS_VERSION} + Node.js Eg
 echo "  ─────────────────────────────────────────────"
 echo ""
 
-echo -e "${BOLD}[ PANEL ]${NC}"
+ADMIN_EMAIL="admin@admin.com"
+ADMIN_PASS="admin001"
+ADMIN_USER="admin"
+ADMIN_FIRST="Admin"
+ADMIN_LAST="User"
+TZ_INPUT="Asia/Jakarta"
+LOCATION_NAME="sgp"
+NODE_NAME="node-1"
+INSTALL_DOCKER="Y"
+
 read -rp "  Domain panel (contoh: panel.domain.com): " FQDN
-read -rp "  Email admin: " ADMIN_EMAIL
-read -rsp "  Password admin: " ADMIN_PASS
-echo ""
-read -rp "  Username admin [admin]: " ADMIN_USER
-ADMIN_USER="${ADMIN_USER:-admin}"
-read -rp "  Nama depan admin [Admin]: " ADMIN_FIRST
-ADMIN_FIRST="${ADMIN_FIRST:-Admin}"
-read -rp "  Nama belakang admin [User]: " ADMIN_LAST
-ADMIN_LAST="${ADMIN_LAST:-User}"
-read -rp "  Timezone [Asia/Jakarta]: " TZ_INPUT
-TZ_INPUT="${TZ_INPUT:-Asia/Jakarta}"
-
-echo ""
-echo -e "${BOLD}[ WINGS / NODE ]${NC}"
 read -rp "  Domain Wings/node (contoh: node.domain.com): " WINGS_FQDN
-read -rp "  Nama location [Indonesia]: " LOCATION_NAME
-LOCATION_NAME="${LOCATION_NAME:-Indonesia}"
-read -rp "  Nama node di panel [Node-01]: " NODE_NAME
-NODE_NAME="${NODE_NAME:-Node-01}"
 read -rp "  IP publik server ini: " SERVER_IP
-
-echo ""
-echo -e "${BOLD}[ DOCKER ]${NC}"
-read -rp "  Install Docker otomatis? [Y/n]: " INSTALL_DOCKER
-INSTALL_DOCKER="${INSTALL_DOCKER:-Y}"
 
 DB_PASS=$(openssl rand -base64 24 | tr -dc 'a-zA-Z0-9' | head -c 20)
 APP_KEY=$(openssl rand -base64 32)
@@ -85,9 +71,6 @@ echo -e "  ${CYAN}Ringkasan konfigurasi:${NC}"
 echo "  ─────────────────────────────────────────────"
 echo "  Domain Panel  : https://${FQDN}"
 echo "  Domain Wings  : https://${WINGS_FQDN}"
-echo "  Admin email   : ${ADMIN_EMAIL}"
-echo "  Location      : ${LOCATION_NAME}"
-echo "  Node name     : ${NODE_NAME}"
 echo "  Server IP     : ${SERVER_IP}"
 echo "  ─────────────────────────────────────────────"
 echo ""
